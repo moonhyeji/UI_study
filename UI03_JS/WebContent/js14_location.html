@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+  
+  
+  function locTest(){ 
+	 // location.href="https:www.naver.com";
+	 // location.assign("https://www.daum.net");  //페이지 이동:  location.assignsms 는 href와 같다. 
+     location.replace("https://www.naver.com");  //페이지 이동: 전 단계 이력이 없어진다. 
+     //location.reload();  //새로고침 
+	 
+	 //replace는   index -> js14 -> naver 원래 이렇게 가는데 .
+	 //js14 -> naver 가면서 js14를 없애버렸기 때문에 뒤로가기 누르면 index가 나옴. 
+  }
+
+</script>
+
+</head>
+<body>
+
+ <a href = "https://www.google.com/search?newwindow=1&sxsrf=ALeKk01_XtHf1LbeQkLKgAicCNsj3EXMHA%3A1615202544723&source=hp&ei=8AhGYKXGKdiGr7wPkbOd0Ao&iflsig=AINFCbYAAAAAYEYXAKiKrfNJThIT0FFQ7-Y6PSemLBkd&q=kh%EC%A0%95%EB%B3%B4%EA%B5%90%EC%9C%A1%EC%9B%90+&oq=kh%EC%A0%95%EB%B3%B4%EA%B5%90%EC%9C%A1%EC%9B%90+&gs_lcp=Cgdnd3Mtd2l6EAMyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAOgUIABCxAzoICAAQsQMQgwE6BAgAEANQ3hVY2CdghDBoAHAAeACAAYQBiAHyApIBAzAuM5gBAKABAaoBB2d3cy13aXo&sclient=gws-wiz&ved=0ahUKEwil_qmvyqDvAhVYw4sBHZFZB6oQ4dUDCAc&uact=5">이동</a>
+  <!--  이 a 태그와 로케이션 태그는 비슷하다는 것을 알아보자.  -->
+  
+   <!--  <button onclick="locTest();">이동</button> -->
+</body>
+</html>

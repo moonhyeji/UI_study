@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+  
+  function popUp(){
+	  window.open("js13_popup02.html","", "width=300px,height=300px");
+  }
+  //window : 자바스크립트 최상위 객체 
+  //onload = function() : 해당 페이지의 바디부분이 다 로드된 이후에 자바스크립트 실행 
+  //얘도 원래는 window.onload  임. 
+  
+  //open(): 경로, 이름, 옵션을 지정해 줄 수 있음. 
+  //width=300px,height=300px 짜리 팝업창이 만들어짐. 
+  //"" 열릴 프레임의 이름 
+  //https://developer.mozilla.org/ko/docs/Web/API/Window/open
+  // 옵션부분에 "넓이, 길이"등을 설정해 줄 때는 위 링크를 들어가서 확인 후 사용해야 한다. 
+  
+  
+</script>
+
+</head>
+<body>
+   <button onclick ="popUp();">팝업창 </button>
+
+</body>
+</html>

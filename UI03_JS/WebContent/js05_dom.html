@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+  <script type="text/javascript">
+  
+     function searchId(){
+    	 var doc = document.getElementById("test");
+    	 //문서에서 .가지고 올거야 요소를.by 뭘로. id로 (id 속성  = 유일한하나 이기 때문에 . .)
+    	 // 이렇게 찾으면 node하나만 나옴 . 
+    	 doc.innerHTML = "id로 탐색!";
+    	 doc.style.color = "red";
+     }
+     
+     //2.엘리먼트의 name으로 탐색 - 리턴: 배열 (node list)<br>
+
+     function searchName(){
+     //node list (=배열)라고 부름. 중복이 가능하고 여러개가 묶여져 있기 때문에 	 
+    	 var doc= document.getElementsByName("test02");
+     //이름속성은 중복이 가능하기 때문에 Element's'임. 
+     //document에서 / 내가 원하는 것을 가져올것이다 (= .getElementsByName("test02");)
+        
+     //두번째에있는<input type="text" name="test02" value=""><br> 에 밸류값을 넣고싶은 경우? ->답 
+   doc[1].value ="name 속성으로 탐색!!";
+     
+     }
+     //3.
+      function searchTagName(){
+    	  
+    	  var doc = document.getElementsByTagName("p");
+    	  doc[3].innerHTML = "tagName으로 탐색!!!";
+    	  doc[3].style.color - "blue";
+      }
+     //DOM탐색 메소드 
+     function searchQS(){ //??????????????????????
+    	//var doc =document.querySelectorAll("#test");
+    	//doc[0].innerHTML = "querySelectorAll(css선택자)";
+       //querySelector'All'이기 때문에 element's' nodelist와 같이  
+    	//0번지에 있음. 
+    	
+    	//하나만 가져오니까 node가 리턴됨. 
+    	var doc = document.querySelector("#test");
+         doc.innerHTML = "querySelector(css선택자)"
+     
+     }
+      
+     
+  </script>
+
+</head>
+<body>
+
+<p onclick="searchQS();">DOM 탐색 메서드</p>
+  <p id="test" onclick="searchId();">  1. 엘리먼트의 id로 탐색 - 리턴: 값 하나 </p>
+  
+  
+  <p onclick = "searchName();">
+     2.엘리먼트의 name으로 탐색 - 리턴: 배열 (node list)<br>
+     <input type="text" name="test02" value=""><br>
+     <input type="text" name="test02" value=""><br>
+     <input type="text" name="test02" value=""><br>
+  </p>  
+  
+  <p onclick="searchTagName();">3.엘리먼트의 대표이름으로 탐색 - 리턴: 배열 (node list) </p>
+</body>
+</html>
+
+
+
+
+
+

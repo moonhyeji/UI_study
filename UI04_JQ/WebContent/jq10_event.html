@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+   div{
+   width:400px;
+   height: 200px;
+   border: 2px solid red;
+   padding: 20px;
+   overflow: auto;
+   }
+   
+   div p:first-child{
+   float:left;
+   border: 1px solid blue;
+   width: 150px;
+   height: 150px;
+   text-align: center;
+   line-height: 150px;
+   }
+   
+   div p:last-child{
+   float:right;
+   border: 1px solid blue;
+   width: 150px;
+   height: 150px;
+   text-align: center;
+   line-height: 150px;
+   }
+   
+</style>
+
+
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type = "text/javascript">
+
+/*
+ * 이벤트 전파: 각 요소가 서로 포함관계(중첩관계)인 경우,
+ 요소 중 하나에 이벤트가 발생하면 중첩된 요소들도 이벤트가 전파된다.
+ 
+ 이벤터 전파 막기
+ -stopPropagation() : 이벤트 요소의 전파 막기
+ -preventDefault(): 이벤트에 의한 기본 동작 막기
+ -return false: 위의 기능 두개 모두 적용 
+ */
+
+$(document).ready(function(){ 
+	//링크 누르면 바로 네이버로 가는게 아니라 아래 alert가 전부 뜬 다음에 네이버로 감. 
+	//클릭 햇을 때 = 클릭 이벤트 / a 태그 = 링크 . 
+	//클릭이벤트 시 ,  < a > 태그를 클릭하면 p태그, p태그 감싸고 있는 div. body까지 연결되어버림 - 감싸고 있으니까!
+	
+	
+	//a클릭 했을 때 ->p로 가고 ->div로 감. 
+	$("a:eq(0)").click(function (e){
+		alert("a 클릭");
+		//e.stopPropagation(); 
+		//얘를 작성해주면 이벤트 요소의 전파 막아서 a클릭 하고 나서 바로 네이버로 감 . 클릭이벤트가 전달 되지 않음. 
+	   e.preventDefault() //네이버로 넘어가라. 가 기본동작인데 이걸 막아버림 
+	});
+	
+    $("p").click(function (e){
+	 alert("p 클릭");
+	 //e.stopPropagation();
+	});
+	
+	$("div").click(function (e){
+	alert("div 클릭");
+	});
+	
+	
+	
+	/*
+	$("a:eq(1)").bind("mouseover mouseout", function(e){
+		if(e.type == "mouseover"){   //mouseover = hover 마우스가 올라가면 색이 바뀜 
+			$(this).css("background-color","aqua");
+		}
+		if(e.type == "mouseout"){
+			$(this).css("background-color","");
+		}
+	});
+	*/
+	
+   $("a:eq(1)").bind({  //bind: 이벤트 이름과 기능을 묶어줌. 이벤트를 연결 (별로 사용 안함 )
+	   "mouseover":function(){
+	     $(this).css("background-color","yellow");	   
+	   },
+	   "mouseout":function(){
+		   $(this).css("background-color","");
+	   }
+   });
+	
+	$("span").click(function(){
+		$("a:eq(1)").unbind(); //묶어둔거 언바인드 하기  이벤트 해제 (잘 안쓰임 )
+		alert("unbind!");
+	});
+	
+	$("button").click(function(){
+		$("body").append("<p>새로 추가된 p</p>");
+	
+	});
+		$("body").on("click","p",function(){
+			
+         alert("새로 추가된 요소도 이벤트 적용!");
+	   ///////////////////// 다시 복습!!!!!!!! on을 주로 사용하고 bind 별로 사용 안함 .
+	});
+});
+
+</script>
+
+
+</head>
+<body>
+
+<span> unbind() : 이벤트 해제 </span>
+	<div>
+	<!-- a 링크를 클릭하면 여기에 뭔가가 있다면 얘도 실행됨.  -->
+		<p>
+			<a href="https:www.naver.com">클릭!</a>
+		</p>
+		<p>클릭!</p>
+	</div>
+	<div>
+		<p>
+			<a href="https:www.google.com">클릭!</a>
+		</p>
+		<p>클릭!</p>
+   </div>
+		<button>요소 추가</button>
+</body>
+</html>
+
+
+
+
+
+
+
+

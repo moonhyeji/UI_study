@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+<script type = "text/javascript">
+
+
+
+  $(document).ready(function(){
+	  $("div:eq(0)").css({"border": "1px solid red","width": "400px","height":"200px"});
+     $("#view").css({"border": "1px solid red", "width" :"400px", "height": "100px"});
+  });
+  
+  
+  
+  function test01(){
+	  $("span").css("color","red");  
+	  //span 태그로 되어있는 애들 다 찾아서 css를 red로 하기 
+	  // $("span") document.getElementsbyname s  :선택된 것들 =nodelist
+	  $("#view").text('$("span").css("color","red");');
+	  
+  }
+  
+  function test02(){
+	  //$("#t1")  랑 jQuery("#t1") 같다 
+ 	  jQuery("#t1").css("color","blue");
+	  jQuery("#view").text('jQuery("#t1").css("color","blue");');
+	  
+  }
+  
+  function test03(){
+	  $(".t2").css("color","orange");
+	  $("#view").text(' $(".t2").css("color","orange");');
+  }
+  
+  function test04(){
+	  $("li span").css("background-color","gray").css("color","blue");
+	  $("#view").text('$("li span").css("background-color","gray").css("color","blue");');
+  }
+  
+  function test05(){
+	  $("li > span").css("color","orange");
+	  $("#view").text('$("li > span").css("color","orange");');
+  }
+  function test06(){
+	  $("li:nth-child(odd)").css("background-color","skyblue");
+	  $("#view").text('$("li:nth-child(odd)").css("background-color","skyblue");');
+  }
+  
+  function test07(){
+	  $("li:nth-child(even)").css("background-color","purple");
+	  $("#view").text('$("li:nth-child(odd)").css("background-color","purple");');
+  }
+  
+  function test08(){
+	  $("li:nth-child(6)").css("background-color","pink");
+	  $("#view").text('$("li:nth-child(odd)").css("background-color","pink");');
+  } //해당 숫자번쨰 애를 바꿔줌 
+  
+  function test09(){
+	  $("li:first-child").css("background-color","lime");
+	  $("#view").text('$("li:first-child").css("background-color","lime");');
+  }
+  
+  function test10(){
+	  $("li:last-child").css("background-color","skyblue");
+	  $("#view").text('$("li:last-child").css("background-color","skyblue");');
+	  
+  }
+  
+  function cls(){
+	  $("*").css("background-color","white").css("color:"," black");s
+      //$("*").css({background-color" : "", "color":"black"});
+	  //$("ul > li " 로 하면 몇개는 되고 왜 몇개는 안되지?
+  }
+  
+  </script>
+</head>
+<body>
+
+    <h1>selector</h1>
+    
+    <div>
+      <ul>
+         <li><span>tag로 선택하기 </span></li>
+         <li id ="t1">id로 선택하기 </li>
+         <li class = "t2">class로 선택하기</li>
+         <li><span>parent child로 선택하기 </span></li>
+         <li><b><span>parent $gt; child</span></b>로 선택하기</li>
+         <li>:nth-child(n/odd/even)로 선택하기 </li>
+         <li>:first-child로 선택하기 </li>
+         <li>:last-child로 선택하기 </li>
+         
+      </ul>
+     
+    </div>
+    
+    <div>
+        <button onclick="test01();">tag선택(span)</button>
+        <button onclick="test02();">id선택(t1)</button>
+        <button onclick="test03();">class선택(t2)</button>
+        <button onclick="test04();">p c 선택</button>
+        <button onclick="test05();">P&gt; c선택 </button>
+        <button onclick="test06();">odd-child</button>
+        <button onclick="test07();">even-child</button>
+        <button onclick="test08();">num-child</button>
+        <button onclick="test09();">first-child</button>
+        <button onclick="test10();">last-child</button>
+        
+        <button onclick="cls();">clear</button>
+        
+    </div>
+   <div id="view"></div>
+</body>
+</html>

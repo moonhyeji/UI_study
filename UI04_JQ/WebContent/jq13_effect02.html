@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>menu effect</title>
+
+	<style type="text/css">
+	
+	   .main_menu{width: 300px;}
+	   .sub_menu{cursor:pointer;}
+	   .sub-menu2{display:none; cursor:default;}
+	
+	</style>
+    <script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+     <script type="text/javascript">
+     
+     
+    $(function(){  //아코디언 기능, 하나가 선택되어 펼쳐지면 다른 애들은 접혀짐 
+    	$("b").click(function(){  //b태그를 클릭하면 함수실행되는데, /$(this =b태그 
+    	$(this).next().slideToggle(); //b클릭했을 때, b의 옆에 있는 애인  클래스가 서브메뉴2인 유엘테그를 선택해서 슬라이드토글 시킴 .
+    	$(this).parent().siblings().find("ul").slideUp(); //b태그 선택해서 b태그의 parent ,class=sub_menu1인 li태그 애들 의 형제들
+    	//<li class="sub_menu1"> 들의 자식요소 <ul>태그를 찾아서 올려버려라 
+      });
+    });
+    
+    /* 
+    $(function(){ 
+    $("b").click(function(){
+    	$(this).next().slideToggle().end().$(this).parent().siblings().find("ul").slideUp(); 
+    	//end()가 있으면 end 이후 애들이 $(this)와 이어짐 
+    }); */
+
+     </script>
+</head>
+<body>
+ 
+  <p>메뉴만들기</p>
+  
+  <ul type="square" class="main_menu">
+    <li class="sub_menu1">
+      <b>(1)css선택자</b>
+      <ul type="circle" class="sub_menu2">
+         <li>tag로 선택</li>
+         <li>id로 선택</li>
+         <li>class로 선택 </li>
+         <li>parent child로 선택 </li>
+         <li>parent %gt; child로 선택</li>
+         <li>nth-child로 선</li>
+         <li>first-child로 선택</li>
+         <li>last-child로 선택</li>
+      </ul>
+    </li>
+    
+    <li class="sub_menu1"><b>(2)속성선택자</b>
+      <ul type="circle" class="sub_menu2">
+         <li>[attr]</li>
+         <li>[attr=value]</li>
+         <li>[attr!=value]</li>
+      </ul>
+    </li>
+    
+    <li class="sub_menu1"><b>(3)폼선택자</b>
+      <ul type="circle" class="sub_menu2">
+         <li>input:type</li>
+      </ul>
+    </li>
+    
+    <li class="sub_menu1"><b>(4)사용자 정의 선택자</b>
+      <ul type="circle" class="sub_menu2">
+         <li>:eq(n)</li>
+         <li>:first</li>
+         <li>:last</li>
+         <li>:even</li>
+         <li>:odd</li>
+         <li>:parent</li>
+      </ul>
+    </li>
+      
+  </ul>
+</body>
+</html>

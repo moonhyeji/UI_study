@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>select</h1>
+	<form action="#">   <!-- #는 제출해도 같은 페이지에 머물러 있음을 의미함. An action of # indicates that the form stays on the same page, simply suffixing the url with a #. Similar use occurs in anchors. <a href=#">Link</a> for example, will stay on the same page.-->
+		<fieldset>
+			<legend>여러줄 글상자 &amp; 목록상자 </legend>
+
+			<div>
+				<label for="reply">답글</label><br> <!-- 레이블로 무언가의 이름표다 라고 표현 /for: 이 레이블이 누구의 레이블인지 표현하기 위해서 for를 사용함. reply(답글)테그의 이름표이다.  -->
+				<textarea id="reply" rows="3" cols="10" name="re"></textarea>
+				<!--  3줄 열칸을 넣을 수 있는 칸이 만들어줌.-->
+			</div>
+			
+			<div>
+				과목선택 <br> 
+				<select name="se01"> <!-- select로 선택할 수 있는 option selector가 만들어짐  -->
+					<option value="html">HTML</option> <!-- selector 안에 들어가는 옵션들  -->
+					<option value="csc">CSS</option>
+					<option value="js">JavaScript</option>
+					<option value="jp">JQuery</option>
+				</select>
+			</div>
+			<div>
+				저녁메뉴<br> <select name="sel02">
+					<optgroup label="한식"> <!--  셀렉트 테그의 optgroup은 내가 선택할 수 없고,하위  메뉴를 보여주게 됨.-->
+						<option value="갈비찜">갈비찜</option>
+						<option value="잡채">잡채</option>
+					</optgroup>
+					
+					
+					<optgroup label="중식">
+						<option value="마라탕">마라탕</option>
+						<option value="훠궈">훠궈</option>
+					</optgroup>
+
+
+					<optgroup label="양식">
+						<option value="스테이크">스테이크</option>
+						<option value="감자튀김">감자튀김</option>
+					</optgroup>
+
+
+					<optgroup label="일식">
+						<option value="초밥">초밥</option>
+						<option value="우동">우동</option>
+					
+					</optgroup>
+					
+				</select>
+			</div>
+			<div>
+				<input type="submit" value="전송" />
+			</div>
+		</fieldset>
+	</form>
+
+</body>
+</html>

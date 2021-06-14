@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type ="text/javascript">
+   
+   function numberObject(){
+	   
+	   var out = document.getElementById("output");
+	   //1.작성방법
+	   var num01 = new Number(7);//객체를 선언 
+	   var num02 = 7;           //리터럴= 값 자체를 넣어줄 수 있음. 
+	   
+	   //2.Nan
+	   out.innerHTML += "NaN :" + parseInt("7") + "<br/>";
+	   out.innerHTML += "NaN :" + parseInt("a") + "<br/>";
+	   //parseInt 자바와 같음. 문자열로 된 숫자를 숫자로 출력 -다시 공부! 
+	   //a 는 숫자가 아니기 때문에 not a number임. 
+      
+	   //3.infinity
+	   out.innerHTML += "infinity : " + Infinity/100 + "<br>";
+	   out.innerHTML += "infinity : " + (Number.MAX_VALUE + 0.00001e+308) + "<br>";
+       
+	   //4.number 객체의 함수
+        //1) toFixed() : 실수의 소수점 자리수를 지정하고, 문자열로 반환
+         var number01 = 333.34567;
+         out.innerHTML += "toFixed : " + number01.toFixed(2) + "<br>";
+    	 // 333.34567 의 두자리까지만 춫력해라.
+    	 
+    	 //2) toString() : 진수 변환하여 문자열로반환 
+    	 var number02 = 123;
+    	 out.innerHTML  += "toString :" + number02.toString(16) + "<br>";
+    	 //16진수로출력해라. 했더니 7b가 됨. 
+	   
+   }
+   
+   //is~() :  ()가 이다 아니다를 물어보는 함수 . 
+   //isNaN(): ()가 NaN 이 맞니? - 맞다: 숫자가 아니다. 
+	function isNum(){
+	   var out = document.getElementById("output");
+	   var num = prompt("숫자만 입력해 주세요");
+	  
+	   
+	   if(!isNaN(num)){
+		   out.innerHTML += num +"숫자입니다. ";
+	   }else {
+		   out.innerHTML += num +"숫자가 아닙니다. ";
+	   }
+    } 
+   //>>>>>>>실행 됨 ㅎㅎ컨트롤 옵션 i 해서  오류보기 
+   
+   
+   
+   
+   
+</script>
+
+
+</head>
+<body>
+
+  <pre>
+    *자바스크립트에서 기본적으로 제공하는 객체 중 하나 <br>
+    
+    NUMBER
+    -정수와 실수 등 숫자를 다루는 객체 
+    
+    <button onclick ="numberObject();" >클릭!</button>
+   -속성 
+	   NaN : not a number 숫자가 아니다. 
+	   infinity: (무한이다.)범위를 벗어났다.
+   -그 밖의 예외
+	   undefined: 변수가 선언(정의)의되지 않았다.
+	   null:변수는 선언되어있으나, 값이 비어있다. 
+	   <button onclick="isNum();">숫자 판별!</button>
+  </pre>
+
+<p id="output"></p>
+
+
+</body>
+</html>

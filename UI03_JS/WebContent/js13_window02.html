@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>팝업창</title>
+
+<script type="text/javascript">
+	function test(){
+		var val=document.getElementsByName("test")[0].value;
+		opener.document.getElementsByTagName("h1")[1].innerHTML=val;
+		//부모의 도큐멘트를 찾아서, h1이라는 태그를 찾아서, h1의 1번지에 있는 (=h1팝업창만들h1)
+		// 팝업창만들기 <- 이 부분을 내가 써준 부분으로 바꾸자. 
+		close();
+		 //opener: 자식 화면을 열어준 부모화면  .. window 01 에서 window02를 열어줌. 
+		
+	}
+</script>
+
+</head>
+<body>
+
+	<input type="text" name="test"/>
+	<input type="button" onclick="test()" value="전달"/>
+	<input type="button" onclick="self.close()" value="창닫기">
+</body>
+</html>

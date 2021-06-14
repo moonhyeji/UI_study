@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>img</title>
+
+<style type="text/css">
+   img{
+   width: 150px;
+   height: 150px;
+   float:left;
+   }
+   
+   #menubox{position: relative;}
+   
+   #menu{overflow:auto;} 
+   /* overflow는 auto: 웹이 환경을 자동으로 인식해 적용하게 끔 */
+   
+   .sel{
+   width:140px;
+   height: 140px;
+   border: 5px dotted red;
+   position: absolute; /* relative기준으로 */ 
+   left: 300px;
+   }
+   
+   button{
+   width: 150px;
+   height: 150px;
+   margin-left: 300px;
+   }
+   
+</style>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+ $(function(){ //html페이지 로드 후 실행 
+	setInterval(function(){
+		//setInterval() : 일정 시간 간격으로(마다) 해당 함수를 반복. 
+		//setInterval():코드를 일정시간(50ms) 마다, function함수를  반복실행,
+		var div = $("#menu"); 
+	//menu라는 아이디를 가진 애들을 div 변수에 넣공, 
+		$(".active").first().appendTo(div);
+    //active라는 클래스를 가지고 잇는 애들 중에 첫번째요소에서.   
+	//appendTo:선택한 요소(div)중 마지막 위치에 새 요소를 생성하고 추가 
+		//append-> target.append(source) : target에 자식요소로 source를 추가하자 
+		//source.appendTo(target);
+		//target에 자식요소로 source를 추가하자  라는것은 똑같은데 타겟과 소스 위치만 다름. 
+	//<img alt="img02" src="resources/image/img02.png" class="active"> 이렇게 
+	
+    //DOM 트리에 이미 만들어져 있는 애를 append 하면 추가되는게 아니라 이동하게 된다. 
+    //0.05초마다 class=active인 애의 첫번재 찾아서 제일 뒤로 보내라 . 이것이 반복되고 있음. 
+	
+    
+    /* 버튼 한번 더 누르면 stop되면,  toggle클래스에 의해서 class=active 애들이 다 사라지게 됨.(class=active 찾아서 토글해라. )
+    사라지면 active 라는 클래스를 가진 애들 중에 첫번째요소가 없기 때문에 (아무것도 없기 때문에)동작을 안하는 것처럼 보임.
+    단,멈춰진 상태에서도 setInterval이라는 함수는 계속 0.05초마다 돌고있음.  */
+    
+	}, 50); //50밀리세즈동안  = 0.05초 
+	
+	
+	$("button").click(function(){ //button클릭하면 실행, 
+		$("img").toggleClass("active"); 
+	//img 라는 태그를 가진 애들한테 class="active"를 넣었다가 뺏다가 함. 
+	//toggleClass: class속성에 값을 넣었다가 뱃다가 함. 
+		if($("button").text() == "start"){
+    //클릭햇을 때,만약 button이라는 태그의 text가 start 인 것이 참이라면 
+			$("button").text("stop");
+    //button 태그의 텍스트를 stop으로 바꿈. 
+		}else{ //아니면 		
+			$("button").text("start");
+	//button 태그의 텍스트를 start으로 바꿈.
+		}
+	});
+});
+</script>
+
+
+
+</head>
+<body>
+   <h1>777</h1>
+   
+   <div id="menubox">
+       <div class="sel"></div>
+       <div id="menu">
+          <img alt="img01" src="resources/image/img01.png">
+          <img alt="img02" src="resources/image/img02.png">
+          <img alt="img03" src="resources/image/img03.png">
+          <img alt="img04" src="resources/image/img04.png">
+          <img alt="img05" src="resources/image/img05.png">
+       </div>
+   </div>
+   <button>start</button>
+</body>
+</html>

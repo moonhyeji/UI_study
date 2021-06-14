@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<script type="text/javascript">
+      onload=function(){  //WINDOW.ONLOAD로서, 이름이 없는 익명 메소드,HTML의 문서가 완전히 로드되는 경우 자동으로 호출
+    	var arrayObj01= new Array();  // 객체 선언
+    	var arrayObj02 = ["1","2",3,4,"a"]; //배열 안에 문자와 숫자가 섞여서 들어갈 수 있다.
+    	alert(arrayObj02+ " : "+ typeof(arrayObj02));
+      //출력값: 1,2,3,4,a : object
+      //alert 함수에 의해 arrayObj02의 값인 1,2,3,4,a 가 호출되고,
+      //typeof(arrayObj02)= arrayObj02의 타입을 호출: 타입이 배열이기 때문에 object가 호출된다.
+
+
+     	var arrayObj03 = new Array(5);  // 초기값 없는 5칸짜리 배열 객체 생성
+     	alert(arrayObj03[0]);
+      ///undefined 출력됨.
+     	//초기값이 정의되지 않았다. 값을 안넣어주면 초기값이 아얘 없음
+
+
+      var arrayObj04 = new Array(1,2,3,4,5,); // 배열의 초기값 정의하면서 객체 생성
+      alert(arrayObj04[3]); //4출력됨.
+      }
+
+      function multiArr(){
+    	   var len = 3;
+    	   var arr = new Array(len); //Array(3)이므로, 3칸짜리 배열 만들어서 arr이라는 변수에 넣음.
+
+    	   for(var i=0; i < arr.length; i++){
+    		 arr[i] = new Array(len);
+  	     // 0,1,2번지에 3칸짜리배열 각각 또 만듦.
+
+         }
+           arr[0][0] ="수박";
+           arr[0][1] ="키위";
+           arr[0][2] ="딸기";
+
+           arr[1][0] ="1"; //1번지의 0번지에 1 넣어줌
+           arr[1][1] ="2";
+           arr[1][2] ="3";
+
+           arr[2][0] =["java","script"];  //2번지의 0번지에 2칸짜리 배열을 또 만들어서 각각 java, script를 입력해줌.
+           arr[2][1] =["ui","web"];
+           arr[2][2] =["jsp",["servlet","jsp"]]; //2번지의 2번지에 2칸짜리 배열을 만들고, 두번째 칸에 다시 2칸짜리 배열을 만듦.
+
+           alert("배열 전체 : " + arr.toString());  //배열 전체 : 수박,키위,딸기,1,2,3,java,script,ui,web,jsp,servlet,jsp
+                            //arr.toString(): 배열을 문자열로 바꿔주는 함수.를 이용해서 배열 전체를 문자열로 변환했다.
+           alert("3:"+arr[1][2]); // 3:3
+           //문제: servlet :servlet을 출력하자?
+           alert("servlet:" + arr[2][2][1][0]);  //servlet:servlet
+          //servlet:자바로 작성된 프로그램
+
+        }
+
+        function joinTest(){
+    	    var games = ["오버워치","쿠키런","롤","스듀"];
+    	    alert(games);  //오버워치,쿠키런,롤,스듀
+
+          var res = games.join("와(과)");
+          alert(res); //오버워치와(과)쿠키런와(과)롤와(과)스듀
+
+          var nums = ["1","3","5","7","9"];  // nums 배열안에
+          var result = nums.join("+");  // + 가 사이사이 끼어 들어서 문자열이 만들어져 있고, join은 해당 배열의 요소 사이사이에 ("+")를 넣어주는 역할을 함
+          alert(result + " = " + eval(result)); //1+3+5+7+9 = 25
+          //그 문자열이 수식으로 되어있어서 eval함수로 수식계산함
+      }
+
+      function sortTest01(){ //문자정렬
+    	  var arr=["a","d","b","c"];
+    	  alert(arr); //a,d,b,c
+
+        arr.sort();
+    	  alert(arr); //a b c d
+      }
+
+      function sortTest02(){  //숫자정렬
+    	  var arr = [1,21,23,41,5,2,3,8,9,4,6,7,11];
+    	  alert(arr);
+
+    	  arr.sort(); //sort() :  배열을 배열순으로 정렬해주는 함수
+    	  alert(arr); //1,11,2,21,23,3,4,41,5,6,7,8,9 로 정렬됨.
+
+      }
+
+      //익명함수를 이용한 숫자순 정렬.(=sortTest04)
+       function sortTest03(){
+    	  var arr = [1,21,23,41,5,2,3,8,9,4,6,7,11];
+    	  alert(arr);
+
+    	  arr.sort(function(a,b){
+    	    return a- b;           //익명함수부분: function(a,b){return a- b;}
+    	  });
+    	  alert(arr);
+        }//1,2,3,4,5,6,7,8,9,11,21,23,41 출력
+
+        function sortTest04(){
+      	  var arr = [1,21,23,41,5,2,3,8,9,4,6,7,11];
+      	  alert(arr);
+
+      	  arr.sort(compareNum); //sort() : 배열을 배열순으로 정렬해주는 함수
+          //arr 배열을 sort,배열순으로 정렬하는데 정렬할 때 compareNum함수를 이용하여 정렬한다.
+      	  alert(arr); //1,2,3,4,5,6,7,8,9,11,21,23,41 출력
+        }
+
+        function compareNum(a, b){  //자바에서의 comparable과 비슷
+    	  return a-b;  //왼쪽이 더 크면 1이 반환, 같으면 0, 오른쪽이 더 크면 -1이 반환된다. (-1리턴시:자리안바꿈. 1리턴시:자비바꿈[이진탐색트리!])
+        }
+
+        function reverseTest(){
+    	  var arr = [19,2,22,41,33,3]; // 그냥 꺼구로 3,33,41,22,2,19! 정렬해서 거꾸로가 아니라!
+    	  arr.reverse();
+    	  alert(arr);
+        }
+
+
+        function pushAndShiftAndPop(){
+    	  var queue = new Array(); //queue = FIFO
+
+        //push: 배열 맨 뒤에 새로운 데이터 추가
+    	  queue.push("first");
+    	  alert(queue);  //first
+    	  queue.push("second");
+    	  alert(queue);  //first,second
+    	  queue.push("third");
+    	  alert(queue);  //first,second,third
+
+       //shift(): 배열의 앞에서부터 하나만 잘라냄.
+    	 //var a = queue.shift();
+    	 //alert(a);  //first가 출력됨.
+    	 //alert(queue); //하나 잘라내고 난 second,third(나머지) 출력됨.
+
+    	 //pop(): 배열의 뒤에서부터 하나를 잘라냄.
+    	 var b = queue.pop();
+    	 alert(b); //third
+    	 alert(queue); //first,second
+       //(var a = queue.shift();를 주석처리해준다면,),주석처리 안하면 first는 잘려나갔기 때문에 second만 출력됨.
+      }
+
+      //slice(startIndex, endIndex): startIndex ~ endIndex -1 까지 잘라오기
+      function sliceTest(){
+    	  var array01 = new Array(1,2,3,4,5,6,7);
+    	  var array01_1 = array01.slice(1,3); //2,3 = 1번 인덱스에서 3번 인덱스전까지 (이상, 미만)
+    	  alert(array01_1); //2,3
+
+    	  var array02 = new Array(4);
+    	  array02[0] = new Array (1,2);
+    	  array02[1] = new Array (3,4);
+    	  array02[2] = new Array (5,6);
+    	  array02[3] = new Array (7,8);
+    	  var array02_2 = array02.slice(1,3);
+    	  alert(array02_2); //3.4.5.6
+    	  // {  [1,2] /[3,4] /[5,6] /[7,8] }
+    	  //     0      1      2      3   [index] =1번인덱스부터 2번인덱스까지(3전까지) -니까 3456 출력
+
+    	  //4를 출력해보자
+    	  alert(array02_2[0][1]); // array02_2 가   /[34 ]/  [56] 이니까 [0][1]해주면 4가 출력됨.
+
+     	  array02_2[0][1] = 40;
+     	  alert(array02);  //1,2,3,40,5,6,7,8
+     	  //배열 안의 값이 바뀜!! - slice 는 주소값을 복사해 오기 때문에 
+
+         array02[1][1] = 400;
+     	   alert(array02_2);  //3,400,5,6 주소값이 연결되어 있기 때문에 반대의 경우도 바뀐다.
+       }
+
+</script>
+
+
+
+
+<h1>배열객체 </h1>
+
+  <ul>
+    <li onclick="multiArr();">다중배열</li>
+    <li onclick="joinTest();">join()</li>
+      <li>
+          배열 정렬
+          <ul>
+           <li onclick="sortTest01();">문자정렬</li>
+           <li onclick="sortTest02();">숫자정렬</li>
+           <li onclick="sortTest03();">숫자순으로 숫자 정렬1익명함수이용</li>
+           <li onclick="sortTest04();">숫자순으로 숫자 정렬2compareNum함수이용 </li>
+           <li onclick="reverseTest();">거꾸로 정렬</li>
+         </ul>
+         </li>
+
+         <li onclick="pushAndShiftAndPop();">
+          배열 저장 방식
+         <ul>
+         <li>push()</li>
+         <li>shift()</li>
+         <li>pop()</li>
+
+         </ul>
+      </li>
+      <li onclick="sliceTest();">slice()</li>
+  </ul>
+
+</body>
+</html>

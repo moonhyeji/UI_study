@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type = "text/javascript">
+
+   $(document).ready(function(){
+	  $("div").find("b").css({"font-size": "30pt","color": "red"});  //div태그에서 b태그 찾아서 , div태그 안에서 자식요소를 찾으니까 1이커지고 빨강  
+	  $("div").children("#chd").text("2.children()"); //div의 children 중에 p4개 중에 id 가 chd인 애 찾아서 2.chidren으로 바꿔라 
+	  $("b").parent().css("background-color","skyblue"); //b태그의 부모태그 (pre 태그와 첫번째 p태그)를 색깔을바꿔라 
+	  $("p > b").parents("div").css("background-color","hotpink"); //p의 자식요소 b찾아서 ,얘의 부모테그들( =p,div,body) 태그들 중에서 div찾아서 색깔을 바꿔라 
+	  $("p").eq(0).next().css("font-sixe","30pt"); //p태그 중에 eq0번지 태그 =(=<p><b>1</b></p>) 얘의 .next 애들 (형제태그 )를 찾아서, (= <p id= "chd">2</p), 사이즈 바꿔라 . 
+   });
+   
+   /*마지막에 적용된 색으로 바껴야 하는데  왜 1은 여전히 파란색? css가 나중에 적용된 게 아니라다른 애한테 적용 된 것 .*/
+
+</script>
+</head>
+<body>
+    <pre>
+       <b>find("selector")</b> : 선택한 엘리먼트의 자손들 중, 탐색하고자 하는 엘리먼트를 찾는다.
+       <b>children("selector")</b> : 선택한 엘리먼트의 자식요소 중, 탐색하고자 하는 엘리먼트를 찾는다.
+       <b>parent()/parents("selector")</b> : 선택한 엘리먼트의 부모요소를 찾는다.
+       <b>next("selector")</b> : 선택한 엘리먼트 다음에 나오는 요소를 찾는다(형제요소)
+    
+    </pre>
+    
+    <div>
+      <p><b>1</b></p>
+      <p id= "chd">2</p>
+      <p>3</p>
+      <p>4</p>
+    </div>
+</body>
+</html>

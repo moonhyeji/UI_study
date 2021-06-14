@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+ <script type ="text/javascript">
+ 
+   function numTest(val){
+	 var val = Number(val) + 100;
+	 alert(val + typeof(val));
+   }
+   
+   function intTest(val){
+	   var val = parseInt(val) + 100;
+	   alert(val+ typeof(val));
+   }
+   
+   function floatTest(val){
+	   var val =parseFloat(val) +100;
+	   alert(val + typeof(val));
+   }
+   
+   function evalTest(){
+    var val = document.getElementsByName("evalue")[0];
+	if(confirm("작성하신 코드가 맞나요? : " + val.value)){
+		document.getElementsByTagName("span")[0].innerHTML = "<b>계산결과 :" + eval(val.value) + "</b>";
+	   }
+   } // evalTest(){ : 오타 찾음 씨발  ㅜㅜㅜㅜㅜㅜㅜ
+    
+  // eval함수:  안에 문자열로 되어있는 수식을 넣어주면 계산이 되도록 함.- 보안이 취약해서 되도록 사용을 안하는 게 좋음 
+ 
+  
+  
+  
+ </script>
+
+</head>
+<body>
+
+<h1>형변환</h1>
+
+
+	<h2>1.숫자형 형변환:number()</h2>
+	<input type ="text" id="num"/>
+	<button onclick ="numTest(num.value);">클릭!</button>
+	
+	<h2>2.정수형 형변환 :parseInt()</h2>   <!-- 실수는 날라가고 정수타입만  -->
+	<input type ="text" id="int" />
+	<button onclick="intTest(int.value);">클릭!</button>
+	
+	<h2>3.실수형 형변환: parseFloat()</h2>
+	<input type="text" id="float"/>
+	<button onclick="floatTest(float.value);">클릭!</button>
+
+
+    <h2>검증함수: eval()</h2>
+     <p>문자열로 된 코드(수식)을 자바스크립트로 읽어들여서 실행 </p>
+    <input type="text" name="evalue" placeholder= "예) 5+10"/>
+    <button onclick ="evalTest();">클릭!</button>
+    <span></span>
+    <hr>
+    
+    
+    <input type ="number" class="mycalc">
+    <input type ="text" list="cal" class="mycalc">
+    <datalist id="cal">
+      <option value = "+">  
+      <option value = "-">  
+      <option value = "*">  
+      <option value = "/">  
+    </datalist>
+    <input type = "number" class="mycalc">
+    <button onclick ="calc();"> 계산</button>
+    <span></span>
+    
+    
+    <!-- body 에  javascript 써도 됨  -->
+    <script type ="text/javascript">
+    function calc(){
+    var calc =document.querySelectorAll(".mycalc");
+    var res = "";
+    for(var i =0; i < calc.length; i++){
+    res += calc[i].value;
+    }
+    document.getElementsByTagName("span")[1].innerHTML = eval(res);
+    }
+    </script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

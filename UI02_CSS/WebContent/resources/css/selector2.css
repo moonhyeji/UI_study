@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+h1 {
+	background-color: pink;
+}
+
+#a {
+	color: red;
+}
+
+.b {
+	color: blue;
+}
+
+* {
+	padding: 0px;
+}
+
+p>strong{
+	color:orange;
+}
+
+#c + p {
+	color: green;
+	
+}
+p[title]{
+	font-size: 20pt;
+}

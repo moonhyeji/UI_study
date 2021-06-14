@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js22</title>
+
+<script type="text/javascript">
+	function tableVal(){
+		var doc = document.forms[0]; //html에서 폼테그(1개)를 찾아옴 
+		//forms 이기 때문에 배열로 해서 form객체가 올건데 form객체 0번지에 있는거 하나만 옴 . 
+		//doc의 타입은 node하나, 왜냐면 [0]번지 값 하나만 가져왔기 때문에 
+		
+		//<form> :HTML 문서에서 사용자의 입력을 서버로 전달하는 기능
+		//<form action ="경로" method="">
+		// <input type="text" name="id">
+		// <input type="checkbox" name="yes" value="y">    //name!!(중요!)속성으로 잡혀진 애들이 key. value가 value가 됨. 
+		// 폼테그 안에서 네임속성 잡아줘야 한다!!!! 경로로 네임속성의 key에 대한 value가 넘어가야 하니까! 
+		//<input type="submit" value="전송">
+		//form태그는 어떤 형태로 값을 전달하는가? ->submit 이벤트가 발생하면 값을 전달 .  
+		
+		var vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value];
+	   //doc.id.value :doc가 가지고 있는 name 이 아이디인 value값 가져와라.(doc.id 가 textbox 임 ! )
+		//0번지에는 id, 1번지에는 pw. 2번지에는 addr, 3번지에는 phone 이 들어가 있음 
+		
+		
+		//유효성 검사 (유효값 처리 ) - 비번 안쳤을 경우 전송이 안되도록 함 
+	   for(var i = 0; i < vals.length; i++){
+			if(vals[i] == null || vals[i] =="" || vals[i]==undefined){ 
+				//null 값이없음. or  "":문자열공백 . undefined: 배열이 초기화가 안되어있을경우(배열 객체만 선언되어있고 값이 초기화되어있지 않으면 undefined) 
+				//0번지부터 돌면서 i번지 값이 없다면  
+				//vals[i].trim =="" 정확히는 이렇게 트림 시켜야 함!!  //trim: 공백문자 제거함수 
+				
+				alert("모두 다 입력해 주세요!!");  // alert 띄움 , 그리고 추가가 안됨. 
+				return; // <-- 함수 안에서 그냥 리턴을 쓰면 함수 자체를 종료시켜줌 
+			}
+		}
+		
+		document.getElementById("addtr").appendChild(createRow(vals));
+		//createRow () 함수 후에 이 부분 해석하기 ! 
+	}
+
+	function createRow(vals){
+		        // vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value];
+		var tr = document.createElement("tr");
+		     //<tr></tr>
+		
+		     
+		   for(var i = 0;i<vals.length;i++){
+			var td = document.createElement("td");
+			//<td></td>
+			//<td></td>
+			td.textContent=vals[i];
+			//<td>id값</td>
+			//<td>pw값</td>
+			tr.appendChild(td);
+			//<tr><td>id값</td><td>pw값</td><td>addr값</td></tr>      .......이런식으로 반복, 
+			
+		}
+		var dTd = document.createElement("td");
+		//<td></td>
+		dTd.innerHTML="<input type='button' value='삭제' onclick='delRow(this)'>";
+		//<td><input type='button' value='삭제' onclick='delRow(this)'></td>
+		tr.appendChild(dTd);
+		/*-------
+		 <tr>
+		<td>id</td>
+		<td>pw</td>
+		<td>addr</td>
+		<td>phone</td>
+		<td><input type='button' value='삭제' onclick='delRow(this)'></td>
+		<tr>
+		---------> 얘네들이 table 컬럼 바로밑에 들어가게 됨 
+		*/
+		
+		return tr;
+	}
+
+	function deleteVal(){  //전체삭제 
+		var tbody = document.getElementById("addtr");
+		while(tbody.hasChildNodes()) { //hasChildNodes() childnode 남은거 있어? 잇으면 true 
+	    tbody.removeChild(tbody.lastChild );  // lastchild 삭제할거야.
+	   //천천히 삭제한다면! 마지막 줄의 애부터차례대로 삭제됨. 하지만 컴이 빠륵기 때문에 한번에 삭제되는 것처럼 보임 
+		} 
+
+	}
+	
+	function delRow(ele){ // 삭제버튼 품고 있는 줄 하나만 삭제하고 싶음 
+		// delRow(this) 여기서 this 는 input 태그를 말함   /ele = this = input 
+
+		/* -------
+		 <tr>
+		<td>id</td>
+		<td>pw</td>
+		<td>addr</td>
+		<td>phone</td>
+		<td><input type='button' value='삭제' onclick='delRow(this)'></td>
+		<tr>
+		---------> 얘네들이 table 컬럼 바로밑에 들어가게 됨 
+		*/
+		
+		
+		var delTr = ele.parentNode.parentNode;
+		//ele = input type='button' value='삭제' onclick='delRow(this)
+		//ele.parentNode = td  
+		//ele.parentNode.parentNode; = tr  = 
+		/* -------
+		 <tr>
+		<td>id</td>
+		<td>pw</td>
+		<td>addr</td>
+		<td>phone</td>
+		<td><input type='button' value='삭제' onclick='delRow(this)'></td>
+		<tr>*/
+		//<td> : 삭제버튼이 있는 한 칸 
+		
+		var tbody = document.getElementById("addtr");
+		//테이블의 바디부분을 변수로 지정. 
+		
+		tbody.removeChild(delTr);
+		//테이블의 바디부분에서 , 내가 누른  tr 한줄만 지워라. 
+	}
+
+</script>
+
+
+
+
+
+
+</head>
+<body>
+
+	<form>
+		<table id="intable">
+			<tr>
+				<td>아이디:</td>
+				<td><input type="text" name="id"/></td>
+			</tr>
+			<tr>
+				<td>비밀번호:</td>
+				<td><input type="text" name="pw"/></td>
+			</tr>
+			<tr>
+				<td>주소:</td>
+				<td><input type="text" name="addr"/></td>
+			</tr>
+			<tr>
+				<td>전화번호:</td>
+				<td><input type="text" name="phone"/></td>
+			</tr>
+		</table>
+		<input type="button" value="추가" onclick="tableVal();" />
+		<input type="button" value="삭제" onclick="deleteVal();" />
+	</form>
+	
+	<div id="addtable">
+		<table border="1" id="ctb">
+			<col width="100px"/>
+			<col width="100px"/>
+			<col width="300px"/>
+			<col width="200px"/>
+			<col width="100px"/>
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>비밀번호</th>
+					<th>주소</th>
+					<th>전화번호</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody id="addtr">
+			<!--   -------
+		 <tr>
+		<td>id</td>
+		<td>pw</td>
+		<td>addr</td>
+		<td>phone</td>
+		<td><input type='button' value='삭제' onclick='delRow(this)'></td>
+		<tr>
+		이렇게 추가되는 건가? -->
+			</tbody>
+		</table>
+	</div>
+	
+	
+
+</body>
+</html>

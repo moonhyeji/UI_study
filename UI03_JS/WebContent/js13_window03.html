@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>중복체크</title>
+
+<script type="text/javascript">
+	var ids=["khacademy","java","script"];  //데이터베이스에 이미 존재하는 값. 
+	
+	function confirmChk(){
+		var id=document.getElementsByName("id")[0].value;
+		var div=document.getElementsByTagName("div")[0];
+		if(ids.indexOf(id)!=-1){
+			div.innerHTML="<b>아이디가 존재합니다.</b>";
+		}else{
+			var userId="사용할 수 있는 아이디입니다."
+			          +"<input type='button' value='확인'"
+			          +"onclick='insertId( \"  "+id+" \"  )'>";
+			          
+			          //  \" 지우면 에러뜸 : Uncaught ReferenceError: rest is not defined     
+			           //insertId(rest) insertId 에 rest라는 값을 전달하자. 라고 하게 되는 것. 
+			           //rest라는 변수 안에는 값도 없고 만든적도 없어서 undefined
+			           
+			div.innerHTML=userId;          
+		}
+	}
+	
+	function insertId(id){
+		opener.document.getElementsByName("id")[0].value=id;
+		opener.document.getElementsByName("pwd")[0].focus();
+		close();
+	}
+</script>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id"/></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="중복확인" onclick="confirmChk()"/>
+				<input type="button" value="취소" onclick="self.close()"/>
+			</td>
+		</tr>
+	</table>
+	<div></div>
+
+</body>
+</html>

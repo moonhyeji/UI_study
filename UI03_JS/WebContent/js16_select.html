@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript">
+    
+   function show01(){
+    	var food = document.getElementsByName("food")[0];
+    	
+    	//selectedIndex: 선택한 option 채그의 인덱스 반환 . 
+    	var idx = food.selectedIndex;
+    	
+    	//options:select가 가지고 있는 option 태그들의 집합 (배열)
+    	var foodval = food.options[idx].value;
+    	alert(foodVal + "맛있었겠다");
+    }
+   
+   
+   
+   
+    function show02(){
+    	var food = document.getElementsByName("food")[1];
+    	var str ="";
+    	for(var i =0; i< food.options.length; i++){
+    		//selected: option태그가 선택되었는지 여부를판단(선택됨.:true/ 안됨:false)
+    		if(food.options[i].selected){
+    			str += food.options[i].value + "\n";
+    		}
+    	}
+    	alert(str);
+    }
+ </script>
+</head>
+<body>
+    <!-- select태그 안에 option 태그가 들어가기 때문에 둘은 같이 다닌다!  -->
+
+<h1>음식 선택하기 </h1>
+<form>
+	<select name ="food" onchange="show01()";> <!--  변할 때마다 show01함수를 호출--> 
+		<option value ="김">김</option>
+		<option value ="밥">밥</option>
+		<option value ="떡볶이">떡볶이</option>
+		<option value ="어묵">어묵</option>
+		<option value ="돈까스">돈까스</option>
+	</select>
+	<br><br><br><br><br><br>
+	<select name ="food" multiple="multiple" size="5"> <!--  셀렉트 태그 안에 옵션 태그들이 있음.--> 
+		<option value ="회">회</option>
+		<option value ="삼겹살">삼겹살</option>
+		<option value ="라면">라면</option>
+		<option value ="짜장면">짜장면</option>
+		<option value ="짬뽕">짬뽕</option>
+		<option value ="탕수육">탕수육</option>
+	</select>
+	
+	<input type="button" value="선택" onclick="show02();">
+</form>
+</body>
+</html>

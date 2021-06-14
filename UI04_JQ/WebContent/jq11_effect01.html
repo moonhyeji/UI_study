@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <style type="text/css">
+    
+    /*이미지의 스타일.css*/
+
+     img{  
+     width: 200px;
+     height: 200px;
+     position: absolute;
+     left: 200px;
+     top: 100px;
+     }
+     
+     /* p태그 스타일.css*/
+     p{
+     width:100px;
+     border: 1px solid red;
+     left: 10px;
+     display: none;
+     position: absolute; 
+     
+     }
+     <!-- -->
+  
+  </style>
+  
+  <script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+  <script type = "text/javascript">
+  
+  
+  
+  $(function(){ //윈도우가 실행된 이후 실행되라 
+	  $("b").click(function(){   //b태그 클릭하면 실행되는 함수 
+		 $("p").toggle();        //p 태그를 토글 .
+		//여기부터 
+		 $("p").each(function(i){  //펑션 하나하나에 p를 적용하겠다.
+			$(this).animate({  //this 는 p테그에 있는  hide(), show().... 이런애들 
+				
+				"top":50*(i+1) + "px" //top은 css에서 위에서부터 기준으로 몇 px 띄어져서 존재해라. 
+			}, 1000);  //1000의 단위는 밀리초 = 천 밀리초 = 1초 }-> 1초동안 animate 해라. 
+			/* 0번지에 있는 p부터 하나씩 증가하면서 실행됨. 
+			1초동안  px <- 위에서부터 몇 px만큼 내려가라. 
+			// 11번쨰 애가 들어가면 50*12px를 1초동안 내려가라가 됨. ->얘네가 메뉴  */
+			
+			//여기까지로  이펙트메서드 누르면 메뉴가 내려옴 
+			 
+		 });
+		 
+	  });
+	  
+	$("p").bind("click",function(){   // = $("p").click(function(){ 과 같음.  
+		/* on으로 해도 됨.on이 더 좋음. p에 클릭하는 이벤트가 발생. 
+		$(this);클릭 된 애를 말함.  */
+		
+		
+		
+		var ele = $(this);  //$(this); 클릭이벤트가 발생된 p테그 
+		ele.css("background","hotpink"); //css 백그라운드를 핫핑크로 바꿔라 
+		ele.siblings("p").css("background-color","");
+		//siblings: 형제요소들. 
+		//형제요소들중 p인요소들을 찾아서 백그라운드 없애라. 
+		//이거 없으면, slidedown 누르면 분홍색 되고 나머지 애들은 색이 없어야 하니까. 
+		
+	if(ele.is("p:contains(hide)")){
+		$("img").hide();
+	}
+	if(ele.is("p:contains(show)")){
+		$("img").show();
+	}
+	if(ele.is("p:contains(toggle)")){
+		$("img").toggle();
+	}
+	if(ele.is("p:contains(slideUp)")){
+		$("img").slideUp(); //slide 모션으로 감춰라 
+	}
+	if(ele.is("p:contains(slideDown)")){
+		$("img").slideDown();
+	}
+	if(ele.is("p:contains(slideToggle)")){
+		$("img").slideToggle();
+	}
+	if(ele.is("p:contains(fadeOut)")){  //duration 이 기본 400으로 되어있다. 
+		$("img").fadeOut(1000);
+	}
+	if(ele.is("p:contains(fadeIn)")){
+		$("img").fadeIn();
+	}
+	if(ele.is("p:contains(fadeTo)")){
+       //$("img").fadeTo(4000, 0.2);  
+       // 이 설정을 해두고 fadeto를 누르고, fadetoggle 하면 
+       // fadeto의 (4000, 0.2) 이 설정이 된 상태에서 fadetoggle된다. 
+	}
+	if(ele.is("p:contains(fadeToggle)")){  //부드럽게 나타났다가 사라지기 
+		$("img").fadeToggle();
+	}
+	if(ele.is("p:contains(animate)")){
+		$("img").animate({
+		"width" : "500px",
+		"height":"500px",
+		"left":"600px",
+		"top":"0px"
+		}, 2000); //2000 이 속도 지정해주지 않으면 기본속도 400 
+	 }
+	
+     });
+  });
+
+
+	
+	
+	
+	
+
+  </script>
+
+
+</head>
+<body>
+   <b> 이펙트 메서드 </b>
+   
+   <div>
+		<p>hide()</p>
+		<p>show()</p>
+		<p>toggle()</p>
+		<p>slideUp()</p>
+		<p>slideDown()</p>
+		<p>slideToggle()</p>
+		<p>fadeOut()</p>
+		<p>fadeIn()</p>
+		<p>fadeTo()</p>
+		<p>fadeToggle()</p>
+		<p>animate()</p>
+   </div>
+   <img alt ="" src="resources/image/img01.png" id="img01">
+   
+   
+<!--    여기 바디 이후에 스크립트를 만들면 $(function) 이 필요가 없음. 얘 없어도페이지 로딩 후 실행이 됨. 
+ -->
+ </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>기본 테이블 만들기</h1>
+
+	<table border="5"> <!--  table border 숫자에 따라 테이블테두리의 두께가 바뀜 -->
+		<tr><!--  table의 row  -->
+			<th>컬럼1</th><!--  table head  : th 는 항상 가운데정렬. 볼드체가  됨-->
+			<th>컬럼2</th>
+		</tr>
+
+		<tr>
+			<td>1</td> <!-- td table data :td 는 그냥 안에 들어가는 데이터임.  -->
+			<td>2</td>
+		</tr>
+
+		<tr>
+			<td>3</td> 
+			<td>4</td>
+		</tr>
+
+	</table>
+
+
+	<h2>추가적인 요소 사용해서 테이블 만들기</h2>
+
+	<table border="1">
+		<caption>테이블 제목</caption><!-- caption: 해당 테이블의 제목 달아줄 때 사용-->
+		<colgroup>  <!-- column의 그룹  -->
+			<col width="100px" />  			<!-- col: 해당 테이블의 속성을 줄 때 사용. 가로길이가 100,200,300픽셀임-->
+			<col width="200px" />
+			<col width="300px" />
+		</colgroup>
+
+		<thead>  			<!-- 코드의 순서를 변경해도 head body foot은 해드 바디 풋 차례대로 나온다!!!!-->
+			<tr>
+				<th>colum1</th>
+				<th>colum2</th>
+				<th>colum3</th>
+			</tr>
+
+		</thead>		<!-- 여기까지 thead -->
+		<tr>
+			<td>data1</td>
+			<td>data2</td>
+			<td>data3</td>
+		</tr>
+
+		<tr>
+			<td>data4</td>
+			<td>data5</td>
+			<td>data6</td>
+		</tr>
+
+		<tr>
+			<td>data7</td>
+			<td>data8</td>
+			<td>data9</td>
+		</tr>
+		</tbody>
+		<!--  여기까지가 tbody -->
+
+		<tbody>
+		<tfoot>
+			<tr>
+				<td>footer1</td>
+				<td>footer2</td>
+				<td>footer3</td>
+			</tr>
+		</tfoot>
+		<!-- 여기까지 tfoot -->
+	</table>
+       <p>  td를 넣으면  row에 왼쪽부터 차례대로 채워진다</p>
+        
+	<h1>셀 병합 하기</h1>
+
+
+	<table border="1">
+		<!-- 테이블 테그 안에서 .(table tr th) ,( table tr. td)   이런식으로  -->
+	<tr> 
+		<th>컬럼1</th>
+		<th>컬럼2</th>
+		<th>컬럼3</th>
+		<th>컬럼4</th>
+	    <th>컬럼5</th>
+		<th>컬럼6</th>
+		<th>컬럼7</th>
+	</tr>
+	
+	<tr>
+    <td rowspan="2">세로 (열) 합치기</td>   <!--rowspan: 세로열 두개("2")를 span 합치겠다. 2번까지  rowspan="4 "하면 세로열 4개가합쳐짐 . -->
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+		<td>7</td>
+		
+	</tr>
+	
+	<tr>
+		<td>4</td>
+		<td>6</td>
+		<td>8</td>
+		<td>10</td>
+		<td colspan="2">가로 (행 ) 합치기</td> <!--colspan: 가로열 두개("2")를 합치겠다.  -->
+	</tr>
+	</table>
+</body>
+</html>

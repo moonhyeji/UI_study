@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+  function test01(){
+	  var doc = $("input:text").val(); //input:text하면 얘가 갖고 잇는 value아무거나 찾아서 가져와줌?
+	  alert(doc);
+  }
+  
+  function test02(){
+	  var doc =$("input:radio").val();//input 이 가지고잇는 type이 라디오 인 애의 value값을 가져오자 
+      alert("시작날짜 : " +doc );
+  
+  }
+  
+  function test03(){
+	  var doc = $("input: checkbox").val();
+	  alert("과정명: "+ doc);
+  }
+  
+  //* 1.window가 load된 이후에 
+   $(function(){ 
+  //2.select tag의 option 이 change 되면 (change 이벤트가 발생하면)
+    $("select").change(function(){ 
+  //3.change 돼서 선택된 option 의 value 값과, index를 alert() 하고 싶다. */
+      var option = $("select > option : selected"); //선택되어있는 애를 가져오자 
+      alert(option.val() + "index : " + $("select > option").index(option));
+      //select > option: [option, option,option]의 노드리스트 형태로 select의 option 다 가져와짐 
+      });    
+    });
+  
+ 
+</script>
+</head>
+<body>
+     <form action="">
+       <input type="text">
+       <input type="button" value="선택" onclick="test01();"> <br>
+       <input type="radio" value="21/01/12~" onclick="test02();"> 21/01/12~ <br>
+       <input type="checkbox" value="전문가과정" onclick="test03();">빅데이터 전문 개발자 
+     </form>
+     <!-- 1.window가 load된 이후에 
+          2.select tag의 option 이 change 되면 (change 이벤트가 발생하면)
+          3.change 돼서 선택된 option 의 value 값과, index를 alert() 하고 싶다. -->
+    <select>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+    </select>
+
+</body>
+</html>

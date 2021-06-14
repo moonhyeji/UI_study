@@ -1,0 +1,111 @@
+/* 타입 선택자 */
+pre {
+	text-align: center;
+}
+
+h1 {
+	color: skyblue;
+}
+
+/*id 선택자*/
+#sid01 {
+	color: red;
+}
+
+#sid02 {
+	background-color: blue;
+	color: white;
+}
+
+.sid03 {    /*원래는 #sid03 */
+	color: green;
+}
+
+/*class선택자  */
+.scls {
+	color: silver;
+}
+
+/* 전체선택자 */
+* {
+	padding: 0px;
+	margin: 0px;
+	font-variant: small-caps;
+}
+/* 자식 선택자 */
+#at>p {
+	color: red;
+}
+
+#at>div>p {
+	color: blue;
+}
+
+/* 하위 선택자 */
+div span {
+	background-color: yellow;
+}
+
+/* 인접 선택자 */
+h3+b {
+	background-color: gray;
+	color: ghostwhite;
+}
+
+/*span 에 인접해 있는 b테그의 색깔을 바꿔보자*/
+span+b {
+	color: fuchsia;
+}
+
+/*속성 선택자   42.43page ppt  */
+p[title]{
+	background-color : yellow;
+}
+p[title="b"]{
+	color : green;
+}
+
+/*가상 클래스 선택자 */
+a:link{
+	color: green;
+	font-size: 30pt;
+}
+a:visited{
+	color:orange;
+}  /*갔다온 애들은 주황색 됨. */
+a:hover{
+	/*hover: 마우스 가져다 댓을 때 */
+	background-color:fuchsia;
+	font-size:40pt;
+}
+a:active{
+	background-color: lime;
+	color:black;
+	/*누르는 순간만 바뀜!!*/
+}
+input:checked{
+      width:100px;
+      height:100px;
+      /*체크하면 커짐! */
+}
+/*종속 선택자 */
+li.scls01{  /*li태그 안의 scls01에 잇는 애 */
+	color: ghostwhite;
+	background-color: purple;
+}
+li.scls02 #sidul{
+	font-size: 30px;
+	font-weight:bold;
+}
+/* 그룹 선택자 */
+p, pre, strong{
+	color: teal;
+}
+/* , 로 연결하면 각각의 속성에 다 같이 연결시켜줌. */
+
+
+
+
+
+
+

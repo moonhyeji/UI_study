@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript">
+ 
+ 
+    function searchParent(){
+    	var child02 = document.getElementsByTagName("p")[1];
+    	var parent = child02.parentNode;  //.parentNode는 child02를 감싸고있는 부모노드를 찾는다.  
+    	
+    	console.log(parent);//console.log() = 콘솔 출력/()안의 내용을 콘솔 창에 출력해 결과값을 볼 수 있게 함
+    	alert(parent.nodeName); //DIV 출력 : parent.nodeName은 DIV 이다. 
+    	parent.style.backgroundColor="yellow"; //부모의 배경색을 노란색으로 한다. 
+    //html의 개발자 도구 콘솔 창에서 바로 편집해보자! 
+    }
+    
+    
+    
+    function searchChild(){
+    	var div = document.getElementsByTagName("div");
+    	alert(div.length);  //div 의 갯수가 3개니까 3출력 
+    	
+    	var divChildren = div[0].childNodes; //childNodes ;<div> 안에 있는 공백 포함 모든 것들을 자식으로 잡음 
+    	alert("child03의 tagName : " + divChildren[5].tagName); //child03의 tagName : 1
+    	//divChildren[5] 인 이유? 공백도 포함해서 인덱스 숫자로 세어주니까! 공백 포함하면 5번째 ! 
+    	//child03의 태그네임 가지고 오자 = child03의 태그네임은 <p> 이다. 
+    	//child03의 backgroundcolor를 skyblue로 변경! 
+        divChildren[5].style.backgroundColor="skyblue";
+
+     }
+    
+       function test01(){ //test01태그를 포함한 div태그"의 배경색을 적용하자 
+        var p = document.getElementsByTagName("p")[3];
+        var parent = p.parentNode;
+        parent.style.backgroundColor = "hotpink";
+        
+        }
+    
+	     function test02(){ //2. "2번지 div 태그에 포함된 test04태그"의 폰트 크기를 20pt로 적용하자.
+	    	 var div = document.getElementsByTagName("div")[2];
+	    	 var child = div.childNodes[2];
+	    	 child.style.fontSize = "50px";
+	    	 
+	     }  
+	     
+ </script>domd
+
+</head>
+<body>
+   <h1>부모탐색,자식탐색</h1>
+     
+     <div>
+	     <p>child01</p> <!-- 얘를 감싸고 있는 부모테그를 찾아라 = DIV태그  -->
+	     <p>child02</p>
+	     <p>child03</p>
+	     <!--div 안에 p,p,p 니까 2번지 아닌가? but 0번지에 textnode가 들어가 있음:
+	     textnode: <div>와 <p> 사이의 공백이 textnode로 들어와짐 :왜?문자가 들어갈 수 있으니까 (공백문자를 문자로 잡아줘서) 
+	     /따라서 <div>와 <p>사이, <p>와 <P>사이의 공백을 다 지우면 child03은 divChildren[2] 2번째 인덱스에 잇는게 맞음  
+	     -->
+	     
+     </div>
+     <button onclick= "searchParent();">부모탐색</button>
+     <button onclick= "searchChild();">자식탐색</button>
+     
+     <h3 onclick="test01();">1. "test01태그를 포함한 div태그"의 배경색을 적용하자  </h3>
+     <!-- parentNode 사용하자  -->
+     
+     <h3 onclick="test02();">2. "2번지 div태그에 포함된 test04태그"의 폰트 크기를 20pt로 적용하자.</h3>
+     <!--childNodes 사용하자  -->
+     <div>
+	     <p>test01</p>
+	     <p>test02</p>
+     </div>
+     <div><p>test03</p>
+	     <p>test04</p>
+	 </div>
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ 
+ 
+  <script type="text/javascript">
+ 
+  //객체 1
+  function myClass(){
+	  this.name = "kh정보교육원"; //외부에서 접근 가능. 
+	  var name02 = "qclass";  //외부에서 접근 불가 . - 지역변수 전역변수 공부 
+	  this.getName02 = function(){  //this.getName02  라는 변수에 함수를 만듦. 
+		//내부함수에 외부함수에 있는 것들을가져와서 내맘대로 가져와서 쓴다 - closure 로 만든것. 
+		  //this.로 getter만든 것. 
+		  return name02;  
+	  }
+  }
+  
+  //객체 2
+  //객체리터럴(리터럴객체)
+  var yourClass = {
+		  name: "kh정보교육원",
+		  print : function(){
+			  alert(yourClass.name + "qclass!!");
+		  } //kh정보교육원 qclass이렇게 나와야 함. 
+  }
+  
+  //prototype = 확장. / 기능을 이미 만들어놨는데 버전업 되면서 기능을 추가하고 싶어서 프로토타입을 만듬. (버전업 돼서 만들엇던 기능을 삭제하고다시 만드는 것보다효율이있어서 )
+  //객체 1(원본)에 +a 를 하기 위해서 프로토타입을 사용 
+  myClass.prototype.print = function(){
+	  // .prototype.print : print 도 myclass로 만들거야 하고기능을 확장해 준 것. 
+	  var tmp= "!!!!";
+	  alert(this.name + tmp + this.getName02() + tmp);
+   }
+  //Number.prototype.toExponential() 
+  //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toExponential
+  
+  
+  function objectTest(){
+	  
+	  var qclass = new myClass();
+	  alert(qclass.name); //"kh정보교육원"
+	  alert(qclass.name02); //undefined  - 정의되지 않음 - 변수가 없다 라는뜻. 
+	  alert(qclass.getName02()); //qclass 
+      
+	  alert(yourClass.name);
+	  yourClass.print();
+	  
+	  qclass.print();
+	  
+  }
+  </script>
+
+
+
+</head>
+<body>
+   <pre>
+     객체의 구성
+     
+     - 메서드: 기능 정의
+     - 속성 : 객체 내부 데이터
+     - this: 객체 내부의 메서드나 속성을 정의할 때 사용
+     - 프로토타입: 객체의 확장 
+   
+   </pre>
+   
+   <button onclick="objectTest();"> 클릭! </button>
+
+
+</body>
+</html>

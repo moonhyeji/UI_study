@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#wrapper {
+	width: 600px;
+	border: 1px dotted red;
+}
+
+#w01 {
+	float: right;
+	width: 200px;
+	padding: 15px;
+	background-color: skyblue;
+}
+
+#w02 {
+	float: left;
+	width: 200px;
+	padding: 15px;
+	background-color: hotpink;
+}
+
+#w03 {
+	background-color: gray;
+	padding: 10pxs;
+	clear: left;
+	/* clear */
+	/*왼쪽 속성의 플롯을 취소시킴 w02가 왼쪽으로 흐르는 건데 그것을 취소시킴 */
+
+	/* clear right 하면 오른쪽 속성을 취소시킴. 오른쪽으로 간다음에 왼쪽에 흘러라,
+ 라고 했는데 오른쪽으로 간 애 영역이 그대로 잡히고 나머지가 밑에 표시됨. 
+ 왼쪽은 흐를 수 있는데 오른쪽이 커서 안보이는 것임. */
+
+	/* clear both로 하면 왼쪽으로 흐르는 것도오른쪽으로 흐르는 것도 둘 다 흐르지 않음.*/
+}
+</style>
+
+
+
+</head>
+	<body>
+			<h1>Lorem Ipsum</h1>
+			<div id="wrapper">
+				<div id="w01">Lorem Ipsum is simply dummy text of the printing
+					and typesetting industry. Lorem Ipsum has been the industry's
+					standard dummy text ever since the 1500s</div>
+				<div id="w02">but also the leap into electronic typesetting,
+					remaining essentially unchanged.</div>
+				<div id="w03">It is a long established fact that a reader will
+					be distracted by the readable content of a page when looking at its
+					layout. The point of using Lorem Ipsum is that it has a more-or-less
+					normal distribution of letters, as opposed to using 'Content here,
+					content here', making it look like readable English. Many desktop
+					publishing packages and web page editors now use Lorem Ipsum as their
+					default model text, and a search for 'lorem ipsum' will uncover many
+					web sites still in their infancy. Various versions have evolved over
+					the years, sometimes by as</div>
+			</div>
+	</body>
+</html>

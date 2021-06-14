@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <style type="text/css">
+  
+    p{
+     border:  1px solid red;
+    }
+  
+  </style>
+  
+  <script type = "text/javascript">
+  
+  /*DOM  
+  body [h1. btn btn btn fieldset[legend,div]]  이 구조에 ,
+  내가 만든 p태그를 fieldset 에 appendchild 하고 있음. 
+  ->fieldset[legend,div,p]이런식으로 바뀜. 
+  또 , 내가 만든 p태그를 fieldset 에 appendchild 하면 fieldset[legend,div,p,p ]
+  */
+  
+  
+     function addAppend(){
+    	 var fieldset = document.getElementById("addele");
+    	 var p = document.createElement("p");
+    	 /*
+    	 //1.
+    	 var txt = document.createTextNode("자식태그들 중가장 마지막에 추가 ");
+    	 p.appendChild(txt);
+    	 */
+    	 
+    	 //2.
+    	 p.textContent = "자식태그들 중 가장 마지막에 추가 ";
+    	 
+    	 fieldset.appendChild(p);
+     }
+     
+     var count =1;
+ 
+     function addBefore(){
+   	 var p = document.createElement("p");
+   	 var fieldset = document.getElementById("addele");
+   	 
+   	 p.textContent = "엘리먼트 앞에 추가 ("   + (count++) + ")";
+   	 
+   	 var div = document.querySelector("#addele > div");
+   	 fieldset.insertBefore(p, div);
+   	 
+     }
+
+     
+     
+     
+     function moveElement(){ //appendChild를 이용한 엘리먼트 이동 
+    	 var move = document.querySelector("fieldset").children[1];  
+    	 //필드셋을 찾아서 필드런 1번지를 찾아서 순서는상관음 내가 선택한 것을 옮김 .
+    	 //배열의 1번인덱스를 찾아서 옮김 
+    	 var body = document.body;
+    	 body.appendChild(move); //바디로  어팬드차일드 한다  
+     }
+     
+     
+  </script>
+
+
+
+</head>
+<body>
+    <h1>태그 추가하기</h1>
+    <button onclick="addAppend();">appendChild()</button>
+    <button onclick="addBefore();">insertBefore()</button>
+    <button onclick="moveElement();">appendChild를 이용한 엘리먼트 이동 </button>
+    
+    <fieldset id="addele">
+      <legend>부모태그</legend> <!--  <fieldstet>태그 그룹에 제목 붙여주는 테그-->
+      <div>div 태그 </div>
+      <div>div태그22 </div>
+      <div>div태그33 </div>
+    </fieldset>
+    
+    
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--  폼테그 인풋테그 매우중요  -->
+	<form action="html08_form01_res.html" method="post">
+
+<!--  액션 속성은 안에서 서브밋 이벤트가 발생하면(submit버튼 누르면) 해당 경로롤 이동해라, 라는 것, 
+ 메소드 겟 방식 혹은 메소드 호스트 방식으로 이동해라라는 것, -->
+<!--  메소드 겟을 메소드 포스트로 바꾸면, 쿼리스트링이 안나옴. / 메소드가 포스트일때는 물음표,키,벨류가 안보임!!!! -->
+
+
+		<fieldset>	<!--fieldset:  테두리에 네모가 만들어짐.-->
+			<legend> 회원가입 </legend>
+			<p> 				<!--   피테그는 단락테그.  원래 이렇게 영역을 나눌 때는 div  테그를 써야함! 이번엔 이렇게 쓰면 안된다고 하기 위해서p테그 써놓음.-->
+				아이디: <input type="text" name="id" />
+				<!--  input 테그 매우중요!!!사용자가 입력값을 넣을 수 있도록 한 태그 -->
+				<!--   input 의 속성, 타입의 값에 따라  페이지의 내용이 바뀜.-->
+				<!-- 타입은 텍스트로 '텍스트형식'을 입력할 (input) 수 있다.  -->
+				<!-- name="id" 는 form의 action 링크로 전송할 때 아이디:를 id로하여 전송한다는 뜻:컴퓨터가 알아듣기 쉽게 하기 위해서   -->
+			</p>
+
+			<p>
+				비밀번호 : <input type="password" name="pw" />
+				<!-- input 타입을 password라고 하면 text로 입력한 값이 입력은 되지만 화면엔 가려져서나온다.  -->
+			</p>
+
+			<p>
+				이메일 수신여부<br> 
+				<input type="radio" name="rdo" value="y" />Y<br>
+				<input type="radio" name="rdo" value="n" />N
+				<!-- radio 버튼: 옛날 라디오 버튼처럼 하나를 누르면 다른 버튼이 튕겨져 나옴.
+				radio버튼은 같은 이름일 때 중복 선택 불가!!! 
+				같은 rdo 이름이기 때문에 둘중에 하나만 선택할 수 있음.  -->
+			</p>
+			<p>
+				관심분야 <br>
+			    <input type="checkbox" name="cb1" value="html">HTML<br>
+				<input type="checkbox" name="cb2" value="css">CSS<br> 
+				<input type="checkbox" name="cb3" value="javascript">JAVASCRIPT
+				<!--  여러개 선택이 가능하기 때문에 체크박스라는 형태로 작성.  
+				체크박스는 이름이 달라도 되고 이름이 같아도 됨. -->
+			</p>
+			<p>
+				<input type="button" value="그냥 버튼" /> <!-- 버튼이라고 해놓으면 그냥 버튼.-->
+				<input type="reset" value="취소" /> 	<!-- 취소 누르면 다 사라짐 -->
+				<input type="submit" value="전송 " /> <!-- 전송누르면 form action 경로로 제출됨. -->
+			</p>
+			<p>
+				<input type="file" />
+				<!--  파일을 누르면 파일을 넣어줄 수 있음.-->
+				<!-- 
+         http://localhost:8787/UI01_HTML/html08_form01_res.html
+         ?id=myid
+         &
+         pw=0000
+         &
+         rdo=y
+         &
+         cb1=html
+         &
+         myhidden=my+hidden+value
+         
+         ? 부터 끝(value)까지 [[[[queryString]]]] 이라고 함.값을 전달해 주겠다 하는 뜻. 
+         k =v & k=v & k=v 이 형태로 값을 전달해 주겠다 라고 함. (?가 있으면 &로 연결해 줌. )
+         (k=v & k =v...  )얘네들을 http://localhost:8787/UI01_HTML/html08_form01_res.html 로 전달해줌. 
+         -->
+
+
+
+
+		<input type="hidden" name="myhidden" value="my hidden value" />
+		<!-- 히든테그는 웹페이지 화면상에는 표시되지 않지만   네임은 myhidden 벨류는 "my hidden value 라는 값을 가지고 있음.
+		제출하면  전송됨 "  myhidden=my+hidden+value" 표시되는 것처럼.  -->
+		<!--    네임속성이 키, 네임속성에 맞는 벨류 속성에 잇는 값이 벨류 . "html08_form01_res.html" 로 가져가게 됨 .
+        폼테그 안에서 네임속성과 벨류속성 잡아줄 수 있는데 네임속성은 키가 되고 벨류속성은 벨류가 됨. 
+        폼테그는 폼의 엑션 속성에 넣어둔 경로에 , 네임의 벨류 형태의 키벨류 값을 전달할 때 사용 . -->
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>

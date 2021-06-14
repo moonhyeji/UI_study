@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<!--  <link href="resources/css/style.css"
+      rel="stylesheet"
+      type="text/css"/>   -->
+<!--  
+href: css 파일 경로(위치)
+rel:  연결 대상의 속성 (style sheet 로 만들어져 있다. -> 문서의 스타일과 관련된 파일이다. )
+type: 해당 파일의 정보값. ()css 역할을 할 것이다.)
+-->
+
+<style type="text/css">
+/*
+  이게 주석임!
+  
+  외부의 css를 가지고 오는 방법은,
+  link 태그를 이용하던가
+  style태그 내에서 @import 를 사용하던가 할 수 있다. 
+  */
+  @import url("resources/css/style.css");
+
+    p {
+   background-color: gold;
+   }
+   
+</style>
+
+</head>
+<body>
+
+  <h1>css 기본문법</h1>
+  
+  <h3>작성방식 3가지</h3>
+  
+  
+  <b style="color:pink;">1.인라인 스타일시트 : 우선순위가 높다.</b>
+  
+  <p>
+    <sapn>2.내부스타일시트 : html 내부에서 간단하게 작성 </sapn>
+    <!--  스타일테그를 이용해서 /타이틀과 엔드헤드 사이에. -->
+    <br>
+    <b>3.외부 스타일시트 : *.css 파일을 생성(가장 많이 사용 )</b>
+    <!-- 네이버의 초록을 전부다 빨간색으로 바꾸고싶다! 메인.블로그.카페 전부 다
+    모든 페이지를 고치려고 하면 에러가 나거나 하나하나 고쳐야 해서 귀찮음. 
+     -->
+    
+  </p>
+  
+
+</body>
+</html>

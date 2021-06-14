@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//onload = function()  = > window(body부분)가 로딩된 후 실행하겠다! 
+  onload = function(){
+	document.getElementsByTagName("button")[0].onclick = testDate01;
+	document.getElementsByTagName("button")[1].onclick = testDate02;
+	document.getElementsByTagName("button")[2].onclick = testDate03; //testDate03메소드랑 연결되게 하는 것. 
+	document.getElementsByTagName("button")[3].onclick = testDate04; //testDate04메소드랑 연결되게 하는 것. 
+	document.getElementsByTagName("button")[4].onclick = testDate05; //testDate05메소드랑 연결되게 하는 것. 
+
+  
+  }
+  
+  
+   function testDate01(){
+	 var inputDate = document.getElementById("today");
+	 var date = new Date();
+	 
+	 inputDate.innerHTML += date.toDateString() + "<br/>";
+	 inputDate.innerHTML += date.toLocaleDateString() + "<br/>";
+	 inputDate.innerHTML += date.toLocaleString() + "<br/>";
+	 inputDate.innerHTML += date.toLocaleTimeString() + "<br/>";
+   }
+    
+   function testDate02(){
+	   var dayOfWeek = ["일,","월,","화,","수,","목,","금,","토"];
+	   
+	   var date = new Date();
+	   var year = date.getFullYear();
+	   var month = date.getMonth() + 1;
+	   var day = date.getDate();
+	   var week = date.getDay();
+	  
+	   document.getElementById("today").innerHTML = year + "/" + month + "/" + day + "/" + dayOfWeek[week];
+  
+   //년도 월 일 요일 가져오는 메소드들 사용. 메소드 잘 모르겠으면 mdn, w3schools가서찾아보기. 
+   }
+   
+   function testDate03(){
+	   //specific 이라는 id를 가진 span 태그의 inner HTML 에 
+	   //2021-1-12 를 출력하고 싶다. (형식 무관)
+	   
+	   var year = 2021;
+	   var month = 1;
+	   var date = 12;
+	   
+	   var target = new Date(year, month-1, date);
+	   //month -1: //january is 0, 0부터 시작하기 때문에,자바랑 똑같이 
+	   var specific = document.getElementById("specific");
+	   specific.innerHTML = target;
+   }
+   
+   function testDate04(){
+	   var dates = document.getElementById("dates").value;  //input속성 가져와ㅏ서,input tag의 밸류속성을 가져옴. <input type ="date" id="start"> 여기서 "date"를 가져옴 
+	   var inputDay = document.getElementById("inputDay").value;
+	   var date= new Date(dates);  //date: 2021 1. 12의date
+	   date.setDate(date.getDate()+ parseInt(inputDay));
+	   document.getElementById("result").value = date.toLocaleDateString();
+   }
+   
+   function testDate05(){
+	   var start = document.getElementById("start").value;
+	   var end = document.querySelector("#end").value;
+	   //querySelector 니까 #이 붙음. 
+	   //querySelector 와 getElementById 의 차이점: getElementById("?") ->?의 값을 하나 찾아서 리턴해줌 따라서 node가 리턴됨. 
+	   //querySelector ("?") ?인 css선택자를 탐색해서  리턴해줌 따라서 node를 리턴해줌. 
+	   //querySelectorAll("?") -> all 이니까 nodelist가 리턴됨.  
+			   
+			   
+	   var startDay = new Date(start);
+	   var endDay = new Date(end);
+	   //getTime() :현재날짜를  milliseconds로 반환
+	   var dday = (endDay.getTime() - startDay.getTime()) /(1000 * 60 * 60 * 24);
+	   document.getElementById("dday").value = dday;
+	   
+   }
+   
+ 
+</script>
+
+
+</head>
+<body>
+
+<h1>오늘 날짜 출력하기 </h1>
+
+<button>오늘 날짜</button><br>
+<button>오늘날짜 (표현)</button><br>
+<span id="today"></span><br>
+
+
+<h1>특정 날짜 출력하기</h1>
+
+<button>특정 날짜</button>
+<span id = "specific"></span>
+
+
+<h1>경과 날짜 구하기</h1>
+<label>지정 날짜</label>
+<input type ="date" id="dates"><br>
+<label>경과일</label>
+<input type="number" id="inputDay"><br>
+<label>경과 후 날짜</label>
+<input type = "text" id ="result" readonly="readonly"><br>
+<button>경과날짜</button>
+
+
+<h1>D-Day</h1>
+<label>시작날짜</label>
+<input type ="date" id="start"><br>
+<label>종료날짜</label>
+<input type ="date" id="end"><br>
+<label>남은 일수</label>
+<input type="text" readonly="readonly" id="dday"><br>
+<button>남은 일수</button>
+<!-- 조건: getTime() 사용해서 풀기!  -->
+
+
+
+</body>
+</html>
+
+

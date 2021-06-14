@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>윈도우 연습01</title>  <!-- 윈도우 창 이름이 윈도우연습01  -->
+
+<style type="text/css">        
+	#regist {
+		border: 1px solid black;
+		background: pink;
+		position: absolute;  /*릴레티브로 설정 되어있는 부모를 기준, 릴레티브로 설정이 안되어있으면 바디부분! */
+		top: 200px;
+		left: 500px;
+		display: none; /*<- 아직 안만들고 필요할 때 만들어 줄거야 */
+	   /* visibility: hidden; /*개발자도구로 보면 이미 만들어져 잇는 것을 알 수 있음. */
+				          /*display: none; 아얘 안만들짐. 공간을 차지하지 않음 자기 영역도 없음.*/ 
+		
+	}
+	
+	#test{
+	visibility: hidden;
+	/* display: none; */ 
+	}
+</style>
+
+<script type="text/javascript">
+	function openWin() {   // 
+		var url = "js13_window02.html";
+		var title = "myframe";  //얘를 만약에 비우게 되면 새창에서 뜸 .
+		var prop = "top=200px,left=600px,width=500px,height=500px";
+		window.open(url, title, prop);
+		//window.open 팝업창을 열어주는 함수 
+		//prop: 팝업창에 대한 옵션을지정,  prop 을 지우면 새탭에 열림 .
+	}
+
+	function registForm() {
+		document.getElementById("regist").style.display = "block";  // (원레 regist는 display: none 이엿지만 )block요소로 내 영역을 잡을거다 하는 것. 
+		document.body.style.background = "gray";
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) { //for in 문 (향상된 for문)
+		//	for(var i=0;i<btns.length;i++){
+			btns[i].disabled = "disabled";
+			
+			
+		/*향상된 포문. for var in_(컬랙션 혹은 배열이 들어오는 자리 =iterable(반복가능) 한 요소  ) 
+		for each 문과 비슷. in오른쪽에 있는애들을 하나씩 가져와서 var에 넣을거야
+		btns 에 가져와서 i 에 넣을거야. 
+		i번지에 있는 값의  디스에이블 요소에 디스에이블을 넣어주자 
+		
+		이름이 btn이라도 되어있는 애들을 찾아서 disable 해준다! 
+		
+		cf.for of 문도 찾아보기!!! */	
+		 
+			
+			
+			
+		}
+	}
+
+	function closeWin() {
+		document.getElementById("regist").style.display = "none";
+		document.body.style.background = "white";
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) {
+			btns[i].disabled = "";
+		}
+	}
+
+	function idchk() {
+		alert("중복체크를 확인하세요");
+	}
+
+	function idCheck() {
+		open("js13_window03.html", "", "width=300px,height=300px");
+	}
+	
+	
+</script>
+</head>
+<body>
+
+	<h1>window객체</h1>
+	
+	<pre id="test">
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<button onclick="openWin()" name="btn">창열기</button>
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+
+
+
+
+	<div id="regist">
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> 
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<br/><br/><br/>
+	<iframe name="myframe"></iframe>
+ <!-- myframe 이라는 이름의 iframe 안에 다시 지정가능.  -->
+</body>
+</html>
+
+ <!--html 맨 마지막에  팝업창만들기 블록부분 봐 보기  --> 
+

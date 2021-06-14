@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>wrap</title>
+
+<style type="text/css">
+   .box{
+   border: 2px solid red;
+   }
+   
+   #menu{
+   background-color:skyblue;
+   text-align: right;
+   }
+   
+   a{
+   text-decoration: none;
+   font-size: 20pt;
+   }
+  
+   #menu div{
+   display: inline-block;
+   margin-right:10px;
+   }
+   
+</style>
+
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+   
+   $(function(){
+	   var $box = $("<div>").addClass("box"); 
+	   //$box = <div class="box"></div> 
+	  
+	   /* //<div> 에 class가 box인 애를 추가. 
+	  변수에 $ 나 _ 붙을 수 잇음.
+	  -> 변수 앞에 $붙으면 변수안에 들어가는 값([?])은 jquery다 라고 해석할 수 있음. 
+	  $변수 = [?] 에서 
+	   */
+	  
+	  $(".sub_menu:first").wrap($box);
+	  //<div class="box">   </div> = ($box);
+	  //<div class="box"><div class="sub_menu"><a href="#"><span>국비지원</span></a></div></div>
+	  //위에 애를 달라박스로 감싸라고, 
+	  $(".sub_menu").click(function(){
+		 $(".sub_menu").each(function(){
+			 //$().each = ()를  function 각각에 실행시켜준다. 반복해서. 
+			 
+			 if($(this).parent().is(".box")){
+			//만일 자기의 부모가 .box를 가지고 있다면, 
+				 $(this).unwrap(".box");		//부모 div 태그를 없애라. 없으면  그냥 넘어가고, 
+			 }
+		 }); //여기 까지 해서빨간 네모가 없어진 상태. 
+		 $(this).wrap($box);  //this 가 내가 클릭한 애, 한테 div의 class box를 넣어줘라. 
+	  }); // 잘 모르겠으면 개발자 도구를 보면서 class box가 생기고 사라지는 것을 보자
+	
+  
+	  $("a").wrapInner("<span></span>"); 
+	  // 하면 a태그 안쪽에 있는 것들 (a의 자식요소 애들을 )찾아서 전부다안쪽을 . span으로 감싸라.
+      $("pre").wrapAll("<b></b>")
+      //wrapall : 해당되는 요소pre태그  전체를 밖쪽에  b 태그로감싸라. 
+   });   //얘네 개발자 도구 보면서 비교해보기 
+      //pre 테그가 흩어져있으면 모아와서 묶어버림 . 다른테그의 자식요소로 묶여져 있어도 빼와서 묶어버림.  
+        
+      
+</script>
+
+
+</head>
+<body>
+
+  <pre>e</pre>
+  <pre>f</pre> 
+  
+
+   <div id="menu">      
+      <div class="sub_menu">
+      <pre>z</pre>
+        <a href="#"><span>국비지원</span></a>
+      </div>
+      
+      <div class="sub_menu">
+        <a href="#">훈련검색</a>
+      </div>
+      
+      <div class="sub_menu">
+        <a href="#">질문답변</a>
+        
+      </div>
+      
+      <div class="sub_menu">
+        <a href="#">과정후기</a>
+      </div>
+   </div>
+    
+    <pre>a</pre>
+    <pre>b</pre>
+    <pre>c</pre>
+    <pre>d</pre>   
+   
+
+
+</body>
+</html>

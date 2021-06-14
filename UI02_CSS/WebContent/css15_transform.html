@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+		 <style type="text/css">
+		
+			#tlate{
+				width: 200px;
+				height: 200px;
+				background: red;
+				color: white;
+				font-size: 30pt;
+				transform: translate(50px, 50px);
+			}
+		#trota{
+		width: 200px;
+		height:200px;
+		background-color:red;
+		color: white;
+		font-size: 30pt;
+		transform: rotate(30deg); /* 30도만큼 기울어진 것 */
+		}
+		#tsca{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		color: white;
+		font-size:30pt;
+		transform: scale(0.6, 0.6);
+		}
+		#tskew{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		color:white;
+		font-size: 30pt;
+		transform: skew(20deg, 20deg);
+		/* 세로축 중심으로 20도 , 가로축 중심으로 20도씩 기울여짐. */
+		
+		}
+		#tran{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		color: white;
+		font-size: 30pt;
+		transition: width 0.5s, background 1.5s linear, transform 1.5s;
+		/* 200픽셀에서 800픽셀로 0.5초동안. 백그라운드 컬러는 리니어하게바뀜.transform은 1.5초동안 
+		 translate(300px, 0px);로 바뀜 */ 
+		
+		}
+		#tran:hover {
+		width: 800px;
+		background-color: blue;
+		transform:translate(300px, 0px);
+		
+		}
+		
+			
+		li{
+	   width: 500px;
+	   background-color: skyblue;
+	   margin-bottom: 3px;
+	   font-size: 30pt;
+	   font-weight: bold;
+	   list-style-type: none;
+	   transition: width 0.5s linear, color 7s linear, letter-spacing 1s;
+	   cursor: pointer;
+	   
+	   
+		}
+		li:hover{
+		width: 800px;
+		color: red;
+		letter-spacing: 5px;
+		}
+			
+  
+   </style>
+	
+	</head>
+	  <body>
+		<h1>translate</h1>
+		<div id="tlate">위치이동</div>
+		
+		<h1>rotate</h1>
+		<div id="trota">회전</div>
+	
+	
+	    <h1>scale</h1>
+	    <div id="tsca">크기</div>
+	    
+	    <h1>skew</h1>
+	    <div id="tskew">변형</div>
+	    
+	    <h1>transition</h1>
+	    <div id="tran">속성변</div>
+	    
+	    <div>
+	    <h1>MainMenu </h1>
+	    <ul>
+	      <li>COMPANY </li>
+	     <li> PRODUCT</li>
+	     <li> SEVICE</li>
+	     <li> SUPPORT</li>
+	    
+	    
+	    </ul>
+	    
+	    
+	    </div>
+	   
+	   
+	    
+	    
+	  </body>
+	</html>
